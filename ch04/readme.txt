@@ -15,4 +15,4 @@ assignment and gives the course grades to students. On the other hand,
 the library manages the reservation, return, and storage of books in the library. 
 
 This application uses the FastAPI framework driven by Python 3.8.
-Not database included yet.
+No database included yet.
