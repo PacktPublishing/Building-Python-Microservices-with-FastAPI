@@ -1,0 +1,33 @@
+from fastapi import APIRouter, Depends
+from fastapi.encoders import jsonable_encoder
+from fastapi.responses import JSONResponse
+
+
+from lagom import Container
+from lagom.integrations.fast_api import FastApiIntegration
+
+from repository.recipes import recipes
+from repository.complaints import BadRecipeRepository
+from uuid import UUID
+
+
+container = Container()
+#container[BadRecipeRepository] = Singleton(BadRecipeRepository())
+container[BadRecipeRepository] = BadRecipeRepository()
+
+router = APIRouter()
+deps = FastApiIntegration(container, request_singletons=[BadRecipeRepository])
+
+@router.post("/complaint/recipe")
+def report_recipe(rid: UUID, complaintservice=deps.depends(BadRecipeRepository)): 
+    if recipes.get(rid) == None: 
+        return JSONResponse(content={"message": "invalid operation"}, status_code=403)
+    else: 
+        complaintservice.add_bad_recipe(rid)
+        return JSONResponse(content={"message": "reported bad recipe"}, status_code=201)
+
+@router.get("/complaint/list/all")
+def list_defective_recipes(complaintservice=deps.depends(BadRecipeRepository)): 
+    print(id(complaintservice))
+    defects_list = jsonable_encoder(complaintservice.query_bad_recipes())
+    return defects_list
