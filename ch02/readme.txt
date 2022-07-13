@@ -15,4 +15,4 @@ user or visitor. This prototype will be a good backbone for a travelogue-style
 microservice architecture that can be applied in tourism-related businesses. 
 
 This application uses the FastAPI framework driven by Python 3.8.
-Not database included yet.
+No database included yet.
