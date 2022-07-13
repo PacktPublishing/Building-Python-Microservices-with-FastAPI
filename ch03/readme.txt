@@ -15,4 +15,4 @@ The microservice application is an initial architecture for a robust
 online recipe platform. 
 
 This application uses the FastAPI framework driven by Python 3.8.
-Not database included yet.
+No database included yet.
