@@ -12,4 +12,4 @@ It is a microservice application that can establish an exchange of ideas and dis
 unlimited topics, including social activities and educational ideas among users. 
 
 This application uses the FastAPI framework driven by Python 3.8.
-Not database included yet.
+No database included yet.
