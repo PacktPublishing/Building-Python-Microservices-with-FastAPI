@@ -1,0 +1,84 @@
+Log: [1e320914-d166-4f5e-a39b-09723e04400d: 2021-11-28T12:02:25.582056+0800 - INFO - Request to access /ch04/university/1 
+Log: [1e320914-d166-4f5e-a39b-09723e04400d: 2021-11-28T12:02:25.597036+0800 - INFO - Successfully accessed /ch04/university/1 
+Log: [fd3badeb-8d38-4aec-b2cb-017da853e3db: 2021-11-28T12:02:25.609162+0800 - INFO - Request to access /ch04/student/index 
+Log: [fd3badeb-8d38-4aec-b2cb-017da853e3db: 2021-11-28T12:02:25.617177+0800 - INFO - Successfully accessed /ch04/student/index 
+Log: [4cdb1a46-59c8-4762-8b4b-291041a95788: 2021-11-28T12:03:25.187495+0800 - INFO - Request to access /ch04/student/profile/add 
+Log: [4cdb1a46-59c8-4762-8b4b-291041a95788: 2021-11-28T12:03:25.203421+0800 - INFO - Successfully accessed /ch04/student/profile/add 
+Log: [bcff0cc9-7e50-47a5-bc04-24d83f1e59e6: 2021-11-28T12:03:33.404919+0800 - INFO - Request to access /ch04/university/2 
+Log: [bcff0cc9-7e50-47a5-bc04-24d83f1e59e6: 2021-11-28T12:03:33.410917+0800 - INFO - Successfully accessed /ch04/university/2 
+Log: [5cde7503-cb5e-4bda-aebe-4103b2894ffe: 2021-11-28T12:03:33.423922+0800 - INFO - Request to access /ch04/faculty/index 
+Log: [5cde7503-cb5e-4bda-aebe-4103b2894ffe: 2021-11-28T12:03:33.432919+0800 - INFO - Successfully accessed /ch04/faculty/index 
+Log: [7d237742-fdac-4f4f-9604-ce49d3c4c3a7: 2021-11-28T12:04:46.126516+0800 - INFO - Request to access /ch04/faculty/books/request/list 
+Log: [3a496d87-566c-477b-898c-8191ed6adc05: 2021-11-28T12:04:48.212197+0800 - INFO - Request to access /ch04/library/book/request/list 
+Log: [3a496d87-566c-477b-898c-8191ed6adc05: 2021-11-28T12:04:48.221832+0800 - INFO - Successfully accessed /ch04/library/book/request/list 
+Log: [7d237742-fdac-4f4f-9604-ce49d3c4c3a7: 2021-11-28T12:04:48.239817+0800 - INFO - Successfully accessed /ch04/faculty/books/request/list 
+Log: [8a6c87c7-a5a0-4824-ac04-b6804f0fa2dc: 2021-11-28T12:05:09.062019+0800 - INFO - Request to access /ch04/university/3 
+Log: [8a6c87c7-a5a0-4824-ac04-b6804f0fa2dc: 2021-11-28T12:05:09.072017+0800 - INFO - Successfully accessed /ch04/university/3 
+Log: [30aba48b-76fa-4a7f-9c6c-3ba3b0579a4c: 2021-11-28T12:05:09.084335+0800 - INFO - Request to access /ch04/library/index 
+Log: [30aba48b-76fa-4a7f-9c6c-3ba3b0579a4c: 2021-11-28T12:05:09.089508+0800 - INFO - Successfully accessed /ch04/library/index 
+Log: [c72f4287-f269-4b21-a96e-f8891e0a4a51: 2021-11-28T12:05:28.987578+0800 - INFO - Request to access /ch04/library/book/add 
+Log: [c72f4287-f269-4b21-a96e-f8891e0a4a51: 2021-11-28T12:05:28.996538+0800 - INFO - Successfully accessed /ch04/library/book/add 
+Log: [b83546cd-016e-4d8c-92f7-b84381013d34: 2021-11-29T07:56:07.796841+0800 - INFO - Request to access /ch04/student/docs 
+Log: [b83546cd-016e-4d8c-92f7-b84381013d34: 2021-11-29T07:56:07.801454+0800 - INFO - Successfully accessed /ch04/student/docs 
+Log: [a0690860-30ca-4e1b-86b0-c22cc8d64be5: 2021-11-29T07:56:08.047413+0800 - INFO - Request to access /ch04/student/openapi.json 
+Log: [a0690860-30ca-4e1b-86b0-c22cc8d64be5: 2021-11-29T07:56:08.076429+0800 - INFO - Successfully accessed /ch04/student/openapi.json 
+Log: [f1646073-d07d-40ff-b6f1-c86b15b9c4d7: 2021-11-29T07:56:15.021506+0800 - INFO - Request to access /ch04/student/assignment/list 
+Log: [f1646073-d07d-40ff-b6f1-c86b15b9c4d7: 2021-11-29T07:56:15.186048+0800 - INFO - Successfully accessed /ch04/student/assignment/list 
+Log: [64b335b4-ad23-42e8-83b5-d9f952c9c698: 2021-11-29T08:18:57.777011+0800 - INFO - Request to access /ch04/faculty/docs 
+Log: [64b335b4-ad23-42e8-83b5-d9f952c9c698: 2021-11-29T08:18:57.782004+0800 - INFO - Successfully accessed /ch04/faculty/docs 
+Log: [bfde421f-9b02-4a30-b757-1eb10929a8cb: 2021-11-29T08:18:57.927416+0800 - INFO - Request to access /ch04/faculty/doc 
+Log: [bfde421f-9b02-4a30-b757-1eb10929a8cb: 2021-11-29T08:18:57.931419+0800 - INFO - Successfully accessed /ch04/faculty/doc 
+Log: [a56175a3-4233-40a4-b8bb-ffc531af72b5: 2021-11-29T08:19:02.737937+0800 - INFO - Request to access /ch04/faculty/openapi.json 
+Log: [a56175a3-4233-40a4-b8bb-ffc531af72b5: 2021-11-29T08:19:02.775974+0800 - INFO - Successfully accessed /ch04/faculty/openapi.json 
+Log: [308da646-ed81-4bee-b326-c7627261201e: 2021-11-29T08:19:08.829162+0800 - INFO - Request to access /ch04/student/assignment/list 
+Log: [308da646-ed81-4bee-b326-c7627261201e: 2021-11-29T08:19:15.960112+0800 - INFO - Successfully accessed /ch04/student/assignment/list 
+Log: [12a19a49-526c-4a10-a3bd-3c79e3487406: 2021-11-29T08:19:16.043091+0800 - INFO - Request to access /ch04/faculty/assignments/list 
+Log: [12a19a49-526c-4a10-a3bd-3c79e3487406: 2021-11-29T08:19:16.056086+0800 - INFO - Successfully accessed /ch04/faculty/assignments/list 
+Log: [90240f6d-e920-4fc2-b084-f0a53263e19b: 2021-12-01T10:48:54.434369+0800 - INFO - Request to access /ch04/university/1 
+Log: [90240f6d-e920-4fc2-b084-f0a53263e19b: 2021-12-01T10:48:54.450352+0800 - INFO - Successfully accessed /ch04/university/1 
+Log: [69089747-1c11-4d8b-b043-552f0b52e66a: 2021-12-01T10:48:54.464350+0800 - INFO - Request to access /ch04/student/index 
+Log: [69089747-1c11-4d8b-b043-552f0b52e66a: 2021-12-01T10:48:54.473350+0800 - INFO - Successfully accessed /ch04/student/index 
+Log: [ba430651-174f-4be1-93b9-7345c353e8f5: 2021-12-01T10:50:01.397199+0800 - INFO - Request to access /ch04/university/1 
+Log: [ba430651-174f-4be1-93b9-7345c353e8f5: 2021-12-01T10:50:01.412211+0800 - INFO - Successfully accessed /ch04/university/1 
+Log: [2daa5af4-a8af-4b4a-8246-28083b9b4b31: 2021-12-01T10:50:01.443201+0800 - INFO - Request to access /ch04/student/index 
+Log: [2daa5af4-a8af-4b4a-8246-28083b9b4b31: 2021-12-01T10:50:01.452192+0800 - INFO - Successfully accessed /ch04/student/index 
+Log: [b669ecb1-1f94-4d53-8ce3-18e8629a46f3: 2021-12-01T10:51:55.274861+0800 - INFO - Request to access /ch04/university/1 
+Log: [b669ecb1-1f94-4d53-8ce3-18e8629a46f3: 2021-12-01T10:51:55.281326+0800 - INFO - Successfully accessed /ch04/university/1 
+Log: [b19cd231-d9ca-472f-9ab6-8c30ddbddbc5: 2021-12-01T10:51:55.289320+0800 - INFO - Request to access /ch04/student/index 
+Log: [b19cd231-d9ca-472f-9ab6-8c30ddbddbc5: 2021-12-01T10:51:55.293321+0800 - INFO - Successfully accessed /ch04/student/index 
+Log: [e8ea8b31-8afe-49a6-a880-cd3a3caf30e8: 2021-12-01T13:29:06.264391+0800 - INFO - Request to access /ch04/student/docs 
+Log: [e8ea8b31-8afe-49a6-a880-cd3a3caf30e8: 2021-12-01T13:29:06.276373+0800 - INFO - Successfully accessed /ch04/student/docs 
+Log: [ef732628-7f28-4bc6-8b55-1b4d4f68f353: 2021-12-01T13:29:09.836374+0800 - INFO - Request to access /ch04/university/1 
+Log: [ef732628-7f28-4bc6-8b55-1b4d4f68f353: 2021-12-01T13:29:09.842372+0800 - INFO - Successfully accessed /ch04/university/1 
+Log: [0322a081-f913-4f6d-82e4-bf41a7d7b480: 2021-12-01T13:29:09.853370+0800 - INFO - Request to access /ch04/student/index 
+Log: [0322a081-f913-4f6d-82e4-bf41a7d7b480: 2021-12-01T13:29:09.865373+0800 - INFO - Successfully accessed /ch04/student/index 
+Log: [aafafea2-8fd4-461b-aec4-1a5ea7560c25: 2021-12-01T13:29:18.999273+0800 - INFO - Request to access /ch04/university/2 
+Log: [aafafea2-8fd4-461b-aec4-1a5ea7560c25: 2021-12-01T13:29:19.010279+0800 - INFO - Successfully accessed /ch04/university/2 
+Log: [a28a53aa-c07f-4c28-a20a-fde8838603af: 2021-12-01T13:29:19.023303+0800 - INFO - Request to access /ch04/faculty/index 
+Log: [a28a53aa-c07f-4c28-a20a-fde8838603af: 2021-12-01T13:29:19.066272+0800 - INFO - Successfully accessed /ch04/faculty/index 
+Log: [08a11a20-fc50-4e83-ae1d-5a96d6d81e5f: 2021-12-01T13:32:56.783040+0800 - INFO - Request to access /ch04/student/index 
+Log: [08a11a20-fc50-4e83-ae1d-5a96d6d81e5f: 2021-12-01T13:32:56.801507+0800 - INFO - Successfully accessed /ch04/student/index 
+Log: [41673f5e-1c86-4ada-92b4-3c202e9eff71: 2021-12-01T14:57:07.656728+0800 - INFO - Request to access /ch04/student/index 
+Log: [41673f5e-1c86-4ada-92b4-3c202e9eff71: 2021-12-01T14:57:07.676614+0800 - INFO - Successfully accessed /ch04/student/index 
+Log: [349b5696-017c-4569-87e1-e4941386bcc6: 2021-12-24T08:43:02.318903+0800 - INFO - Request to access /docs 
+Log: [349b5696-017c-4569-87e1-e4941386bcc6: 2021-12-24T08:43:02.323902+0800 - INFO - Successfully accessed /docs 
+Log: [04d78501-191f-489b-a357-08f5561b3d70: 2021-12-24T08:43:02.577904+0800 - INFO - Request to access /openapi.json 
+Log: [04d78501-191f-489b-a357-08f5561b3d70: 2021-12-24T08:43:02.592905+0800 - INFO - Successfully accessed /openapi.json 
+Log: [5defbd35-b5b0-4006-8a38-f380b1eba4b1: 2021-12-24T08:45:16.382398+0800 - INFO - Request to access / 
+Log: [5defbd35-b5b0-4006-8a38-f380b1eba4b1: 2021-12-24T08:45:16.385389+0800 - INFO - Successfully accessed / 
+Log: [30136b14-74ed-4bcb-9f2e-0de5a055f15b: 2021-12-24T08:45:27.937005+0800 - INFO - Request to access /docs 
+Log: [30136b14-74ed-4bcb-9f2e-0de5a055f15b: 2021-12-24T08:45:27.941009+0800 - INFO - Successfully accessed /docs 
+Log: [966f8376-b434-4637-8724-53f24040b0eb: 2021-12-24T08:45:28.054007+0800 - INFO - Request to access /openapi.json 
+Log: [966f8376-b434-4637-8724-53f24040b0eb: 2021-12-24T08:45:28.059010+0800 - INFO - Successfully accessed /openapi.json 
+Log: [6dda441b-d544-4196-b451-4179e3e2261d: 2022-06-29T21:43:40.263949+0800 - INFO - Request to access /docs 
+Log: [6dda441b-d544-4196-b451-4179e3e2261d: 2022-06-29T21:43:40.267949+0800 - INFO - Successfully accessed /docs 
+Log: [daa8892a-36be-421b-a31b-8ee99d9163b0: 2022-06-29T21:43:40.480948+0800 - INFO - Request to access /openapi.json 
+Log: [daa8892a-36be-421b-a31b-8ee99d9163b0: 2022-06-29T21:43:40.488949+0800 - INFO - Successfully accessed /openapi.json 
+Log: [14c22fc8-3b25-4976-8e74-f02523c9e51d: 2022-06-29T21:44:10.033951+0800 - INFO - Request to access /docs 
+Log: [14c22fc8-3b25-4976-8e74-f02523c9e51d: 2022-06-29T21:44:10.038948+0800 - INFO - Successfully accessed /docs 
+Log: [a5aa4c8b-3947-49ee-b151-9443467720c6: 2022-06-29T21:44:10.230956+0800 - INFO - Request to access /openapi.json 
+Log: [a5aa4c8b-3947-49ee-b151-9443467720c6: 2022-06-29T21:44:10.236950+0800 - INFO - Successfully accessed /openapi.json 
+Log: [de5a2026-47b5-4533-accf-a96878c3ee7f: 2022-07-13T19:36:10.347792+0800 - INFO - Request to access /docs 
+Log: [de5a2026-47b5-4533-accf-a96878c3ee7f: 2022-07-13T19:36:10.353796+0800 - INFO - Successfully accessed /docs 
+Log: [a690c0f5-ef99-487f-805e-a5e0014d934f: 2022-07-13T19:36:11.043188+0800 - INFO - Request to access /openapi.json 
+Log: [a690c0f5-ef99-487f-805e-a5e0014d934f: 2022-07-13T19:36:11.061723+0800 - INFO - Successfully accessed /openapi.json 
