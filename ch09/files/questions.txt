@@ -1,0 +1,4 @@
+What is your favorite menu?
+How often do you eat here for dinner?
+How often do you eat here for breakfast?
+How often do you eat here for lunch?

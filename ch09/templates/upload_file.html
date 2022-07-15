@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container">
+<h2>Upload Logo (PNG or PNG) </h2>
+<form action="/ch09/restaurant/upload/logo" enctype="multipart/form-data" method="post" autocomplete="off">
+    <div class="form-group">
+        <label for="file">File:</label>
+        <input type="file" class="form-control" name="logo" id="logo"/>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+{% endblock %}

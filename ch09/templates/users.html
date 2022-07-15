@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container">
+<h2>List of users </h2>
+<p>This is a Boostrap 4 table applied to JinjaTemplate.</p>
+<table class="table">
+    <thead>
+        <tr>
+          <th>Login ID</th>
+          <th>Username</th>
+          <th>Password</th>
+          <th>Passphrase</th>
+        </tr>
+      </thead>
+      <tbody>
+    {% for login in data %} 
+    <tr>
+        <td>{{ login.login_id}}</td>
+        <td>{{ login.username}}</td>
+        <td>{{ login.password}}</td>
+        <td>{{ login.passphrase}}</td>
+    </tr>
+    {% endfor%}
+</tbody>
+</table>
+</div>
+{% endblock %}

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', path='/css/bootstrap.min.css')}}">
+        <script src="{{url_for('static', path='/js/jquery-3.6.0.js')}}"></script>
+        <script src="{{url_for('static', path='/js/bootstrap.min.js')}}"></script>
+   
+    </head>
+
+    <body>
+        {% block content %}
+        {% endblock content %}
+    </body>
+
+</html>
