@@ -2,7 +2,7 @@
 Application Name: NewsStand Manegement System
 Developer: Sherwin John Calleja Tragura
 Status: Prototype stage
-Date finished: March 22, 2022
+Date finished: May 05, 2022
 
 =========================== Description ====================================
 
