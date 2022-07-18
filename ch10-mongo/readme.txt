@@ -2,7 +2,7 @@
 Application Name: Online Restaurant Review System
 Developer: Sherwin John Calleja Tragura
 Status: Prototype stage
-Date finished: March 22, 2022
+Date finished: June 10, 2022
 
 =========================== Description ====================================
 
