@@ -2,7 +2,7 @@
 Application Name: Secured Online Auction System
 Developer: Sherwin John Calleja Tragura
 Status: Prototype stage
-Date finished: February 15, 2022
+Date finished: March 10, 2022
 
 =========================== Description ====================================
 
