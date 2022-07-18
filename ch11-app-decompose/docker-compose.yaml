@@ -1,0 +1,22 @@
+version: "3"
+services: 
+    ch11-mongo:
+        image: "mongo:latest"
+        ports:
+            - 27017:27017
+        expose:
+            - 27017
+        networks:
+            - ch11-network
+    
+    ch11-app:
+        build: .
+        depends_on: 
+            - ch11-mongo
+        ports:
+            - 8000:8000
+        networks:
+            - ch11-network
+networks:
+    ch11-network:
+      driver: bridge
