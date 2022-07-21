@@ -4,7 +4,7 @@ from pydantic import BaseModel
 from fastapi.encoders import jsonable_encoder
 from json import dumps
 import httpx
-from models.request.library import BookIssuanceReq
+from student_mgt.models.request.library import BookIssuanceReq
 
 router = APIRouter()
 
