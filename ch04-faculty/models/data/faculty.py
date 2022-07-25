@@ -60,7 +60,7 @@ class Login:
         self.password:str = password 
         self.faculty_id = faculty_id
     
-    def __repr(self): 
+    def __repr__(self): 
         return ' '.join([str(self.user_id), self.username, self.password]) 
     
     def __str__(self):
@@ -88,7 +88,7 @@ class Assignment:
         self.rating:float = 0.0 
         self.course:str = course
         
-    def __repr(self): 
+    def __repr__(self): 
         return ' '.join([str(self.assgn_id), self.title, self.date_completed.strftime("%m/%d/%Y, %H:%M:%S"), self.date_due.strftime("%m/%d/%Y, %H:%M:%S"), str(self.rating) ])
 
     def __expr__(self): 
@@ -102,7 +102,7 @@ class StudentBin:
         self.assignment:List[Assignment] = list()
         
     
-    def __repr(self): 
+    def __repr__(self): 
         return ' '.join([str(self.bin_id), str(self.stud_id), str(self.faculty_id)])
 
     def __expr__(self): 
