@@ -48,3 +48,5 @@ class GymClassRepository:
         result = await query.gino.load(Profile_Members.distinct(Profile_Members.id).load(add_child=Gym_Class)).all()
         return result 
 
+    async def join_classes_member(self):
+        result = await Profile_Members.load(add_child=Gym_Class).query.gino.all()
