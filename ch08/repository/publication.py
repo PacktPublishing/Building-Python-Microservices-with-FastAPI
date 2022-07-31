@@ -53,7 +53,6 @@ class PublicationMessengerRepository:
         return result 
     
     async def join_messenger_publication(self):
-        query = Publication.join(Messenger).select()
-        result = await query.gino.load(Messenger.distinct(Messenger.id).load(add_child=Publication)).all()
+        result = await Messenger.load(add_child=Publication).query.gino.all()
         return result 
     

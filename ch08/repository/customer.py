@@ -43,7 +43,6 @@ class CustomerLoginRepository:
         return result 
     
     async def join_customer_login(self):
-        query = Customer.join(Login).select()
-        result = await query.gino.load(Login.distinct(Login.id).load(add_child=Customer)).all()
+        result = await Login.load(add_child=Customer).query.gino.all()
         return result 
 

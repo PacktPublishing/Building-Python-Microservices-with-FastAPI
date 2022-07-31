@@ -43,7 +43,6 @@ class SalesPublicationRepository:
         return result 
     
     async def join_publication_sales(self):
-        #query = Sales.join(Publication).select()
         result = await Publication.load(add_child=Sales).query.gino.all()
         return result 
     

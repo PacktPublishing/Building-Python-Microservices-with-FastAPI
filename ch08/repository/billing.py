@@ -56,7 +56,6 @@ class BillingVendorRepository:
         return result 
     
     async def join_vendor_billing(self):
-        # query = Billing.join(Vendor).select()
         result = await Vendor.load(add_child=Billing).query.gino.all()
         return result 
     

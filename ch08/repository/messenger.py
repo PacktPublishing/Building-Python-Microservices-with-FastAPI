@@ -44,6 +44,5 @@ class MessengerVendorRepository:
         return result 
     
     async def join_vendor_messenger(self):
-        query = Messenger.join(Vendor).select()
-        result = await query.gino.load(Vendor.distinct(Vendor.id).load(add_child=Messenger)).all()
+        result = await Vendor.load(add_child=Messenger).query.gino.all()
         return result   

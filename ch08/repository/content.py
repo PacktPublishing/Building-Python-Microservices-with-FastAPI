@@ -43,7 +43,6 @@ class ContentPublicationRepository:
         return result 
     
     async def join_publication_content(self):
-        query = Content.join(Publication).select()
-        result = await query.gino.load(Publication.distinct(Publication.id).load(add_child=Content)).all()
+        result = await Publication.load(add_child=Content).query.gino.all()
         return result 
 
