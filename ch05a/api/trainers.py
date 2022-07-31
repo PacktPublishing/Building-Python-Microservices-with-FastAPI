@@ -67,3 +67,8 @@ async def list_classes_trainers():
 async def list_classes_members(): 
     repo = GymClassRepository()
     return await repo.join_member_classes()
+
+@router.get("/members/classes/list")
+async def list_members_classes(): 
+    repo = GymClassRepository()
+    return await repo.join_classes_member()
