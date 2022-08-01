@@ -1,12 +1,10 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter
 from fastapi.responses import JSONResponse
 
 from models.request.category import BookReq
 from repository.mongoframe.book import BookRepository
 from repository.mongoframe.reference import ReferenceRepository
 from db_config.mongoframe_config import create_db_client, disconnect_db_client
-
-from mongoframes import *
 
 from datetime import date, datetime
 from json import dumps, loads
