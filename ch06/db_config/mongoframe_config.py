@@ -1,5 +1,5 @@
 from pymongo import MongoClient
-from mongoframes import *
+from mongoframes import Frame
 
 def create_db_client():
     Frame._client = MongoClient('mongodb://localhost:27017/obrs')
