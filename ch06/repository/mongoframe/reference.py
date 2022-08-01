@@ -1,4 +1,4 @@
-from mongoframes import *
+from mongoframes.factory.makers import  Q
 from models.data.mongoframe import Category, Reference
 from typing import List, Dict, Any 
 
