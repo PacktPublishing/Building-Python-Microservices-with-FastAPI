@@ -11,11 +11,20 @@ class Cart(Document):
     qty: int
     date_carted: datetime.datetime
     discount: float
+    
+    class Settings:
+        use_cache = True
+        cache_expiration_time = datetime.timedelta(seconds=10)
+        cache_capacity = 10
  
     
     class Collection:
         name = "cart"
-        
+    
+    class Settings:
+        use_cache = True
+        cache_expiration_time = datetime.timedelta(seconds=10)
+        cache_capacity = 10
     
         
 class Order(Document):
@@ -27,6 +36,11 @@ class Order(Document):
     class Collection:
         name = "order"
         
+    class Settings:
+        use_cache = True
+        cache_expiration_time = datetime.timedelta(seconds=10)
+        cache_capacity = 10
+        
 class Receipt(Document): 
     id: int 
     date_receipt: datetime.datetime 
@@ -36,3 +50,8 @@ class Receipt(Document):
     
     class Collection:
         name = "receipt"
+        
+    class Settings:
+        use_cache = True
+        cache_expiration_time = datetime.timedelta(seconds=10)
+        cache_capacity = 10
