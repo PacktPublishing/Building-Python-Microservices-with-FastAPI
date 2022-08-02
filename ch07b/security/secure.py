@@ -21,8 +21,8 @@ def build_map():
         config = config["CREDENTIALS"]
     else:
         config = {
-            "USERNAME": os.getenv("USERNAME", "sjctrags"),
-            "PASSWORD": os.getenv("PASSWORD", "sjctrags"),
+            "USERNAME": os.getenv("USERNAME", "guest"),
+            "PASSWORD": os.getenv("PASSWORD", "guest"),
             
         }
     return config
