@@ -47,7 +47,6 @@ def authenticate(username, password, account:Login):
         password_check = verify_password(password, account.passphrase)
         return password_check
     except Exception as e:
-        print(e)
         return False
     
 def get_current_user(token: str = Depends(oauth2_scheme), sess:Session = Depends(sess_db) ):
@@ -55,17 +54,16 @@ def get_current_user(token: str = Depends(oauth2_scheme), sess:Session = Depends
     payload = validate_token(token.credentials, config.get('Okta', 'OKTA_ISSUER'), config.get('Okta', 'OKTA_AUDIENCE'), config.get('Okta', 'OKTA_CLIENT_ID'))
     print(payload["sub"])
     try:
-        # AuthN: Validate JWT token locally
+       
         auth_res = validate_remotely(
             token,
             config.get('Okta', 'OKTA_ISSUER'),
             config.get('Okta', 'OKTA_CLIENT_ID'),
             config.get('Okta', 'OKTA_CLIENT_SECRET')
         )
-        print(auth_res)
         username = "sjctrags"
         password = "sjctrags"
-        # Authz: Using OSO       
+         
         loginrepo = LoginRepository(sess)
         user = loginrepo.get_all_login_username(username)
         if authenticate(username, password, user) == False:
@@ -88,19 +86,6 @@ def get_current_user(token: str = Depends(oauth2_scheme), sess:Session = Depends
 
       
     return user
-
-def get_payload(tokenclientId):
-    headers = {
-        'accept': 'application/json',
-        'cache-control': 'no-cache',
-        'content-type': 'application/x-www-form-urlencoded',
-    }
-    
-    url = 'https://dev-5180227.okta.com/api/v1/apps/0oa3tvejee5UPt7QZ5d7/credentials/keys'
-
-    response = httpx.get(url, headers=headers)
-
-    return response.status_code 
 
 def validate_remotely(token, issuer, clientId, clientSecret):
     headers = {
