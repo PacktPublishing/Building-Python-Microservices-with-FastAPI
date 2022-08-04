@@ -19,7 +19,7 @@ key = Fernet.generate_key()
 
 from json import dumps, loads
 
-from fastapi import FastAPI, File, UploadFile
+from fastapi import File, UploadFile
 from fastapi.responses import StreamingResponse
 from io import BytesIO
 from PIL import Image, ImageFilter
@@ -133,11 +133,16 @@ async def list_restaurant_names(request: Request, user: str = Depends(get_curren
     resto_names = request.session['resto_names']
     return resto_names
 
-@router.get("/restaurant/upload/logo")
+@router.get("/restaurant/form/upload/logo")
 async def logo_upload_png_form(req: Request, user: str = Depends(get_current_user) ):
     return templates.TemplateResponse("upload_file.html", {"request": req})
 
-@router.get("/restaurant/upload/video")
+@router.get("/restaurant/upload/video",responses={
+        200: {
+            "content": {"video/mp4": {}},
+            "description": "Return and MP4 encoded video.",
+        }
+    },)
 def video_presentation():
     file_path = os.getcwd() + '\\files\\sample.mp4'
     def load_file():  
