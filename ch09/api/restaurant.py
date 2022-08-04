@@ -140,7 +140,7 @@ async def logo_upload_png_form(req: Request, user: str = Depends(get_current_use
 @router.get("/restaurant/upload/video",responses={
         200: {
             "content": {"video/mp4": {}},
-            "description": "Return and MP4 encoded video.",
+            "description": "Return an MP4 encoded video.",
         }
     },)
 def video_presentation():
