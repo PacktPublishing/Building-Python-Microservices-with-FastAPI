@@ -1,7 +1,7 @@
 from fastapi.routing import APIRoute
 from typing import Callable
 from fastapi import Request, Response
-from util.custom_request import CustomRequest, CustomFormRequest, ExtractionRequest, FileRequest, DecryptRequest
+from util.custom_request import CustomRequest, ExtractionRequest, FileRequest, DecryptRequest
 
 class CustomRoute(APIRoute):
     def get_route_handler(self) -> Callable:

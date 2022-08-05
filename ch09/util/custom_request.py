@@ -1,13 +1,7 @@
-from pickle import decode_long
-from fastapi import Request, Response
-
+from fastapi import Request
 from cryptography.fernet import Fernet
-
 import ast
 import json
-from fastapi.encoders import jsonable_encoder
-from models.request.question import QuestionReq
-import io
 import base64
 
 class CustomRequest(Request):

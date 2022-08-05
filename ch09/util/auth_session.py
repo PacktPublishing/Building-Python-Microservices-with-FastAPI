@@ -7,7 +7,7 @@ from config.db import  create_db_engine
 from repository.login import LoginRepository
 from repository.session import DbSessionRepository
 from starlette.middleware.base import BaseHTTPMiddleware
-from datetime import date, datetime
+from datetime import datetime
 import re
 
 from odmantic import AIOEngine
@@ -15,7 +15,6 @@ from motor.motor_asyncio import AsyncIOMotorClient
 
 from cryptography.fernet import Fernet
 from passlib.context import CryptContext
-import ast
 
 cookie_sec = APIKeyCookie(name="session")
 secret_key = "pdCFmblRt4HWKNpWkl52Jnq3emH3zzg4b80f+4AFVC8="
