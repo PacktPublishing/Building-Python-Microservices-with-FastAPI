@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, Request, Body
+from fastapi import APIRouter, Depends, Request
 from models.request.secured_messages import EncLoginReq, EncRestaurantReq
 from util.auth_session import get_current_user
 from cryptography.fernet import Fernet

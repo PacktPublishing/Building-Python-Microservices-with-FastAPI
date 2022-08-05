@@ -15,15 +15,18 @@ from util.custom_routes import CustomRoute
 from cryptography.fernet import Fernet
 import os
 
-key = Fernet.generate_key()
 
 from json import dumps, loads
 
 from fastapi import File, UploadFile
 from fastapi.responses import StreamingResponse
+from models.documentation.response import Error500Model
+
 from io import BytesIO
 from PIL import Image, ImageFilter
 templates = Jinja2Templates(directory="templates")
+
+key = Fernet.generate_key()
 
 router = APIRouter()
 router.route_class = CustomRoute
@@ -141,6 +144,10 @@ async def logo_upload_png_form(req: Request, user: str = Depends(get_current_use
         200: {
             "content": {"video/mp4": {}},
             "description": "Return an MP4 encoded video.",
+        },
+        500:{
+            "model": Error500Model, 
+            "description": "The item was not found"
         }
     },)
 def video_presentation():
