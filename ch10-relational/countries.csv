@@ -1,0 +1,11 @@
+ID,First Name,Last Name,Age,Gender,Married?
+3,Juan,Luna,32,1990-11-10,M,3,10,10000.0,Anzons Plaza,Tondo,12,4,PUP,False,0
+4,Zeta,Ngo,30,1992-09-01,F,6,20,40000.0,LNHS,113 Real St.,13,6,Eastern Visayas State College,True,5
+5,Jim,Chu,40,1982-05-11,M,6,13,60000.0,HSBC,Bangkal St.,15,6,UP Diliman,True,4
+6,Larry,Santos,33,1991-03-22,M,8,16,55000.0,Makati Science High School,6754 Poblacion,15,7,TIP,False,1
+7,Gene,Chua,23,1999-06-20,F,5,7,9600.0,Makati Science High School,Sampaloc,12,3,Soro-Soro High School,True,7
+8,Larson,Alcala,55,1969-02-10,M,4,30,22600.0,NAPOLCOM,Pandacan,12,4,Pandacan Colleges,True,4
+9,Stella,Marquez,45,1977-07-05,F,9,32,82600.0,DOST,123 Pioneer St,1,7,Up Diliman,True,3
+10,John,Cruz,39,1983-10-15,M,5,23,8600.0,Zeus Merchandize,Soro Soro Ilaya,3,3,Mababang Paaralan ng Tibag,False,6
+11,Liza,Muring,38,1984-08-28,F,11,26,33000.0,Alipay Bistro,178 Vietnam Village,11,6,Palawan College,True,2
+12,Samuel,Relli,34,1988-04-27,M,10,11,89000.0,The Survey Inc,Little Baguio,9,8,UPLB,True,3
