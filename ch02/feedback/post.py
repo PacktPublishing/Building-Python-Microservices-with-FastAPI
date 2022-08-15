@@ -57,6 +57,6 @@ async def delete_tourist_feedback(assessId: UUID, touristId: UUID ):
 
 @router.get("/feedback/list")
 async def show_tourist_post(touristId: UUID):
-    tourist_posts = [key for key in feedback_tour.items() if feedback_tour[key].tourist_id == touristId]
+    tourist_posts = [key for key in feedback_tour.items() if feedback_tour[key]["tourist_id"] == touristId]
     tourist_posts_json = jsonable_encoder(tourist_posts) 
     return JSONResponse(content=tourist_posts_json, status_code=200)
