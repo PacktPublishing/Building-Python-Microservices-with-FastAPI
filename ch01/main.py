@@ -11,6 +11,7 @@ from datetime import date, datetime
 from string import ascii_lowercase
 from random import random
 
+
 app = FastAPI()
 
 valid_users = dict()
@@ -139,21 +140,12 @@ def login(username: str, password: str):
         else:
             return {"message": "invalid user"}
 
-@app.get("/ch01/login/{username}/{password}")
-def login_with_token(username: str, password:str, id: UUID):
-    if valid_users.get(username) == None:
-        return {"message": "user does not exist"}
-    else:
-        user = valid_users[username]
-        if user.id == id and checkpw(password.encode(), user.passphrase.encode()):
-            return user
-        else:
-            return {"message": "invalid user"}
-
+# should be above /ch01/login/{username}/{password}
 @app.get("/ch01/login/details/info")
 def login_info():
-        return {"message": "username and password are needed"}
+    return {"message": "username and password are needed"}
 
+# should be above /ch01/login/{username}/{password}
 @app.get("/ch01/login/password/change")
 def change_password(username: str, old_passw: str = '', new_passw: str = ''):
     passwd_len = 8
@@ -164,17 +156,18 @@ def change_password(username: str, old_passw: str = '', new_passw: str = ''):
         temporary_passwd = ''.join(random.choice(characters) for i in range(passwd_len))
         user = valid_users.get(username)
         user.password = temporary_passwd
-        user.passphrase = hashpw(temporary_passwd,gensalt())
+        user.passphrase = hashpw(temporary_passwd.encode(),gensalt())
         return user
     else:
         user = valid_users.get(username)
         if user.password == old_passw:
             user.password = new_passw
-            user.passphrase = hashpw(new_passw,gensalt())
+            user.passphrase = hashpw(new_passw.encode(),gensalt())
             return user
         else:
             return {"message": "invalid user"}
 
+# should be above /ch01/login/{username}/{password}
 @app.post("/ch01/login/username/unlock")
 def unlock_username(id: Optional[UUID] = None):
     if id == None:
@@ -185,7 +178,7 @@ def unlock_username(id: Optional[UUID] = None):
                 return {"username": val.username}
         return {"message": "user does not exist"}
 
-
+# should be above /ch01/login/{username}/{password}
 @app.post("/ch01/login/password/unlock")
 def unlock_password(username: Optional[str] = None, id: Optional[UUID] = None ):
     if username == None:
@@ -201,7 +194,21 @@ def unlock_password(username: Optional[str] = None, id: Optional[UUID] = None ):
                 return {"password": user.password}
             else:
                 return {"message": "invalid token"}
+            
+@app.get("/ch01/login/{username}/{password}")
+def login_with_token(username: str, password:str, id: UUID):
+    if valid_users.get(username) == None:
+        return {"message": "user does not exist"}
+    else:
+        user = valid_users[username]
+        if user.id == id and checkpw(password.encode(), user.passphrase.encode()):
+            return user
+        else:
+            return {"message": "invalid user"}
 
+
+
+        
 @app.post("/ch01/account/profile/add", response_model=UserProfile)
 def add_profile(uname: str, 
                 fname: str = Form(...), 
