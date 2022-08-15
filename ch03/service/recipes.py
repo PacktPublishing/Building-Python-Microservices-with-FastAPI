@@ -9,7 +9,6 @@ class RecipeService:
         self.repo = repo
         
     def get_recipes(self):
-        #print(self.repo.query_recipes())
         return self.repo.query_recipes()
     
     def add_recipe(self, recipe: Recipe):
