@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends
 from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
-
+from typing import List
 import sys
 from dependency_injector.wiring import inject, Provide
 
@@ -15,10 +15,10 @@ router = APIRouter()
 
 @router.post("/keyword/insert")
 @inject
-def insert_recipe_keywords(rid: UUID, *keywords: str, keywordservice: KeywordRepository = Depends(Provide[Container.keywordservice])): 
+def insert_recipe_keywords(rid: UUID, keywords: List[str], keywordservice: KeywordRepository = Depends(Provide[Container.keywordservice])): 
     if keywords != None:
         keywords_list = list(keywords)
-        keywordservice.insert_keywords(keywords_list)
+        keywordservice.insert_keywords(rid, keywords_list)
         return JSONResponse(content={"message": "inserted recipe keywords"}, status_code=201)
     else:
         return JSONResponse(content={"message": "invalid operation"}, status_code=403)
@@ -26,20 +26,14 @@ def insert_recipe_keywords(rid: UUID, *keywords: str, keywordservice: KeywordRep
 @router.post("/keyword/add")
 @inject
 def add_recipe_keyword(rid: UUID, keyword: str, keywordservice: KeywordRepository = Depends(Provide[Container.keywordservice])): 
-    if recipes.get(rid) == None:
-        return JSONResponse(content={"message": "invalid operation"}, status_code=403)
-    else:
-        keywordservice.add_keywords(rid, keyword)
-        return JSONResponse(content={"message": "inserted recipe keywords"}, status_code=201)
+    keywordservice.add_keywords(rid, keyword)
+    return JSONResponse(content={"message": "inserted recipe keywords"}, status_code=201)
     
 @router.post("/keyword/get")
 @inject
 def get_recipe_keywords(rid: UUID, keywordservice: KeywordRepository = Depends(Provide[Container.keywordservice])): 
-    if recipes.get(rid) == None:
-        return JSONResponse(content={"message": "invalid operation"}, status_code=403)
-    else: 
-        keywords_json = jsonable_encoder(keywordservice.query_keywords(rid)) 
-        return keywords_json
+    keywords_json = jsonable_encoder(keywordservice.query_keywords(rid)) 
+    return keywords_json
     
 @router.get("/keyword/list")
 @inject

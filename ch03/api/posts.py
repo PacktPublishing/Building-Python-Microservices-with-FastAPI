@@ -16,8 +16,11 @@ async def create_post(id:UUID, feedback: str, rating: RecipeRating, userId: UUID
 
 @router.post("/posts/insert", dependencies=[Depends(check_feedback_length)])
 async def insert_post_feedback(post=Depends(create_post), handler=Depends(get_post_service)): 
+    print('hello')
     post_dict = jsonable_encoder(post)
+    
     post_obj = Post(**post_dict)
+    
     handler.add_post(post_obj)
     return post
     

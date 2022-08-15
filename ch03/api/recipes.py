@@ -35,5 +35,4 @@ def insert_recipe(recipe: RecipeReq, handler=Depends(get_recipe_service)):
 
 @router.get("/recipes/list/all")
 def get_all_recipes(handler=Depends(get_recipe_service)):
-    #print(id(handler))
     return handler.get_recipes()
