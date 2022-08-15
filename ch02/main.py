@@ -58,10 +58,10 @@ def rating_exception_handler(req: Request, ex: PostRatingException):
         )
 
 @app.exception_handler(GlobalStarletteHTTPException)
-def global_exception_handler(req: Request, ex: PostFeedbackException):
-    return PlainTextResponse(f"Error message: {str(ex.detail)}", status_code=ex.status_code)
+def global_exception_handler(req: Request, ex: str):
+    return PlainTextResponse(f"Error message: {ex}", status_code=400)
 
 
 @app.exception_handler(RequestValidationError)
-def validationerror_exception_handler(req: Request, ex: PostFeedbackException):
-    return PlainTextResponse(f"Error message: {str(ex.detail)}", status_code=400)
+def validationerror_exception_handler(req: Request, ex: str):
+    return PlainTextResponse(f"Error message: {ex}", status_code=400)
