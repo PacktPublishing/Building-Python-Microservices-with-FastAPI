@@ -13,11 +13,16 @@ class KeywordRepository:
         keywords_recipe[id] = keywords
         
     def add_keywords(self, id:UUID, keyword:str): 
-        keywords_recipe[id].push(keyword)
+        if keywords_recipe.get(id) == None:
+            keywords = list()
+        else:
+            keywords_recipe[id] = keywords
+        keywords.append(keyword)
+        
         
     def query_keywords(self, id:UUID):
         return keywords_recipe[id]
     
     def query_all_keywords(self):
-        return keywords_recipe
+        return dict(keywords_recipe.items())
     

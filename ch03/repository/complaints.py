@@ -8,8 +8,8 @@ class BadRecipeRepository:
         pass
     
     def add_bad_recipe(self, id:UUID): 
-        recipe_bad[id] = recipes[id]
-        del recipes[id]
+        recipe_bad[id] = id
+       
         
     def query_bad_recipes(self): 
-        return recipe_bad.values()
+        return list(recipe_bad.values())

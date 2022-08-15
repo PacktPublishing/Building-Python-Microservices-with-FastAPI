@@ -8,10 +8,10 @@ class AdminRepository:
         pass
     
     def query_login_details(self): 
-        return login_details.values() 
+        return list(login_details.values()) 
     
     def query_user_profiles(self): 
-        return user_profiles.values()
+        return list(user_profiles.values())
     
     def query_logs_visitor(self): 
-        return logs_visitor.values()
+        return list(logs_visitor.values())
