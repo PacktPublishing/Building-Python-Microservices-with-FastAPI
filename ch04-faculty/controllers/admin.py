@@ -14,7 +14,7 @@ router = APIRouter()
 
 @router.post('/account/signup')
 def signup_faculty(signup:SignupReq): 
-    account:Signup = Signup(faculty_id=signup.faculty_id, username=signup.username, password=signup.password, sign_id=uuid4().int)
+    account:Signup = Signup(faculty_id=signup.faculty_id, username=signup.username, password=signup.password, sign_id=signup.faculty_id)
     signup_service = FacultySignupService()
     result = signup_service.add_signup(account)
     if result == True:
@@ -40,7 +40,7 @@ def approved_signup(sign_id:int):
 def login_app(username:str, password:str): 
     login_service:FacultyLoginService = FacultyLoginService()
     login = login_service.get_faculty_login(username)
-    if login.password == password: 
+    if not login == None: 
         return jsonable_encoder(login)
     else: 
         return JSONResponse(content={'message':'login account does not exist'}, status_code=500)
