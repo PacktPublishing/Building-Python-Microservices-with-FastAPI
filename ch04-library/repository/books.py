@@ -18,8 +18,8 @@ class BookRepository:
            profile = book_tbl[book_id]
            profile_enc = jsonable_encoder(profile)
            profile_dict = dict(profile_enc)
-           profile_dict.update(details)         
-           book_tbl[book_id] = namedtuple("Book", profile_dict.keys())(*profile_dict.values())
+           profile_dict.update(details)        
+           book_tbl[book_id] = Book(**profile_dict) 
        except: 
            return False 
        return True
