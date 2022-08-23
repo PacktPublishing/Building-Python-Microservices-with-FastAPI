@@ -3,11 +3,9 @@ from models.data.students import Login
 
 class StudentLoginRepository: 
     
-    def insert_login(self, sign_id:int) -> bool: 
+    def insert_login(self, login:Login) -> bool: 
         try:
-            account = stud_signup_tbl[sign_id]
-            login = Login(user_id=account.sign_id, stud_id=account.stud_id, username=account.username, password = account.password)
-            stud_login_tbl[account.stud_id] = login 
+            stud_login_tbl[login.user_id] = login 
         except: 
             return False 
         return True

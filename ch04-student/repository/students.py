@@ -19,8 +19,8 @@ class StudentRepository:
            profile = students_tbl[stud_id]
            profile_enc = jsonable_encoder(profile)
            profile_dict = dict(profile_enc)
-           profile_dict.update(details)         
-           students_tbl[stud_id] = namedtuple("Student", profile_dict.keys())(*profile_dict.values())
+           profile_dict.update(details) 
+           students_tbl[stud_id] =   Student(**profile_dict)      
        except: 
            return False 
        return True
