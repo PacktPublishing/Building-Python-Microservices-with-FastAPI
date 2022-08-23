@@ -8,10 +8,10 @@ from cqrs.queries import ProfileTrainerListQuery
 from cqrs.trainers.command.create_handlers import AddTrainerCommandHandler
 from cqrs.trainers.query.query_handlers import ListTrainerQueryHandler
 
-async def get_db():
+async def sess_db():
     await db.set_bind("postgresql+asyncpg://postgres:admin2255@localhost:5433/fcms")
     
-router = APIRouter(dependencies=[Depends(get_db)])
+router = APIRouter(dependencies=[Depends(sess_db)])
 
 
 @router.post("/trainer/add" )
