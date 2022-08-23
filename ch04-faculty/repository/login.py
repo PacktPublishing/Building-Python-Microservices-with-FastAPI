@@ -4,11 +4,9 @@ from models.data.faculty import Login
 
 class FacultyLoginRepository: 
     
-    def insert_login(self, sign_id:int) -> bool: 
+    def insert_login(self, login:Login) -> bool: 
         try:
-            account = faculty_signup_tbl[sign_id]
-            login = Login(user_id=account.sign_id, faculty_id=account.faculty_id, username=account.username, password = account.password)
-            faculty_signup_tbl[account.faculty_id] = login 
+            faculty_login_tbl[login.user_id] = login 
         except: 
             return False 
         return True
@@ -28,5 +26,16 @@ class FacultyLoginRepository:
             return False 
         return True
     
-    def get_all_login(self) -> List[Login]: 
+    def get_login(self, username:str) :
+        try:
+           login = [v  for v in  faculty_login_tbl.values() if v.username == username]
+           if not len(login) == 0: 
+              return login[0]
+           else: 
+              return None
+        except:
+            return None
+        
+     
+    def get_all_login(self) : 
         return faculty_login_tbl.values();

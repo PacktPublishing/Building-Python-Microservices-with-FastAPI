@@ -18,8 +18,9 @@ class AssignmentRepository:
            assignment = faculty_assignments_tbl[assgn_id]
            assignment_enc = jsonable_encoder(assignment)
            assignment_dict = dict(assignment_enc)
-           assignment_dict.update(details)         
-           faculty_assignments_tbl[assgn_id] = namedtuple("Assignment", assignment_dict.keys())(*assignment_dict.values())
+           assignment_dict.update(details) 
+           faculty_assignments_tbl[assgn_id] =  Assignment(**assignment_dict)        
+           
        except: 
            return False 
        return True
