@@ -14,7 +14,7 @@ router = APIRouter()
 
 @router.post('/account/signup')
 def signup_students(signup:SignupReq): 
-    account:Signup = Signup(stud_id=signup.stud_id, username=signup.username, password=signup.password, sign_id=uuid4().int)
+    account:Signup = Signup(stud_id=signup.stud_id, username=signup.username, password=signup.password, sign_id=signup.stud_id)
     signup_service = StudentSignupService()
     result = signup_service.add_signup(account)
     if result == True:

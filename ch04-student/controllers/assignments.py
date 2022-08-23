@@ -9,14 +9,14 @@ router = APIRouter()
 
 @router.get('/assignment/list')
 async def list_assignments(): 
-   with httpx.Client() as client:
-    response = await client.get("http://localhost:8001/ch04/faculty/assignments/list")
-    return response.json()
+   async with httpx.AsyncClient() as client:
+    result = await client.get("http://localhost:8002/ch04/faculty/assignments/list")
+    return result.json()
 
 @router.post('/assignment/submit')
 def submit_assignment(assignment:AssignmentRequest ):
    with httpx.Client() as client:
-      response = client.post("http://localhost:8001/ch04/faculty/assignments/student/submit", data=json.dumps(jsonable_encoder(assignment)))
+      response = client.post("http://localhost:8002/ch04/faculty/assignments/student/submit", data=json.dumps(jsonable_encoder(assignment)))
       return response.content
 
 
