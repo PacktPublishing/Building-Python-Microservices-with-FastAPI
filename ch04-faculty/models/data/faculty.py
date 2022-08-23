@@ -48,10 +48,10 @@ class Signup:
         self.password:str = password
         
     def __repr__(self):
-        return ' '.join([str(self.sign_id), str(self.stud_id), self.username, self.password])
+        return ' '.join([str(self.sign_id), str(self.faculty_id), self.username, self.password])
 
     def __str__(self): 
-        return ' '.join([str(self.sign_id), str(self.stud_id), self.username, self.password])
+        return ' '.join([str(self.sign_id), str(self.faculty_id), self.username, self.password])
 
 class Login: 
     def __init__(self, user_id:int, username:str, password:str, faculty_id:int): 
