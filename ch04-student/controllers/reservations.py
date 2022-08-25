@@ -17,5 +17,5 @@ def access_book():
 @router.post('/reserve/book')
 def reserve_book(book:BookIssuanceReq): 
   with httpx.Client() as client:
-     response = client.post("http://localhost:8001/ch04/library/book/issuance",  data={"book":dumps(jsonable_encoder(book))})
+     response = client.post("http://localhost:8001/ch04/library/book/issuance",  data=dumps(jsonable_encoder(book)))
      return response.content 
