@@ -201,7 +201,7 @@ def login_with_token(username: str, password:str, id: UUID):
         return {"message": "user does not exist"}
     else:
         user = valid_users[username]
-        if user.id == id and checkpw(password.encode(), user.passphrase.encode()):
+        if user.id == id and checkpw(password.encode(), user.passphrase):
             return user
         else:
             return {"message": "invalid user"}
@@ -299,7 +299,7 @@ def update_discussion(username: str, id: UUID, post_type: PostType, post: Post):
     elif discussion_posts.get(id) == None:
         return {"message": "post does not exist"}
     else:
-        forum_post = ForumPost(id=uuid1(), topic=post_reply.topic, message=post_reply.message, post_type=post_type, date_posted=post_reply.date_posted, username=username)
+        forum_post = ForumPost(id=uuid1(), topic=post.topic, message=post.message, post_type=post_type, date_posted=post.date_posted, username=username)
         forum = discussion_posts[id] 
         forum.main_post = forum_post
         return {"message": "main post update"}
