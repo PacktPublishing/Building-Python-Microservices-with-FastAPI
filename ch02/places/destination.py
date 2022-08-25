@@ -6,7 +6,7 @@ from fastapi.responses import JSONResponse
 
 from datetime import datetime
 from uuid import UUID
-from enum import Enum
+from enum import Enum, IntEnum
 
 router = APIRouter()
 
@@ -14,8 +14,8 @@ tours = dict()
 tours_basic_info = dict()
 tours_locations = dict()
 
-class StarRating(int, Enum):
-    one = 1
+class StarRating(IntEnum):
+    onw = 1
     two = 2
     three = 3
     four = 4
