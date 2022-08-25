@@ -37,6 +37,7 @@ def post_tourist_feedback(touristId: UUID, tid: UUID, post: Post, bg_task: Backg
 
 @router.post("/feedback/update/rating")
 def update_tour_rating(assessId: UUID, new_rating: StarRating):
+    print(new_rating)
     if feedback_tour.get(assessId) == None:
         raise PostRatingException(detail='tour assessment invalid', status_code=403)
     tid = feedback_tour[assessId].tour_id
@@ -48,15 +49,16 @@ def update_tour_rating(assessId: UUID, new_rating: StarRating):
 async def delete_tourist_feedback(assessId: UUID, touristId: UUID ):
     if approved_users.get(touristId) == None and feedback_tour.get(assessId):
         raise PostFeedbackException(detail='tourist and tour details invalid', status_code=403)
-    post_delete = [key for key in feedback_tour.items() if key == assessId]
-    for key in post_delete:
-        is_owner = await check_post_owner(feedback_tour, key, touristId)
+    post_delete = [access for access in feedback_tour.values() if access.id == assessId]
+    for access in post_delete:
+        is_owner = await check_post_owner(feedback_tour, access.id, touristId)
         if is_owner:
-            del feedback_tour[key]
+            del feedback_tour[access.id]
     return JSONResponse(content={"message" : f"deleted posts of {touristId}"}, status_code=200)
 
 @router.get("/feedback/list")
 async def show_tourist_post(touristId: UUID):
-    tourist_posts = [key for key in feedback_tour.items() if feedback_tour[key]["tourist_id"] == touristId]
+    print(feedback_tour)
+    tourist_posts = [assess for assess in feedback_tour.values() if assess.tourist_id == touristId]
     tourist_posts_json = jsonable_encoder(tourist_posts) 
     return JSONResponse(content=tourist_posts_json, status_code=200)
