@@ -32,9 +32,9 @@ def delete_book(book_id:int):
     book_service = BookService()
     result = book_service.remove_book(book_id)
     if result == True: 
-        return JSONResponse(content={'message': 'book insertion successful'}, status_code=201)
+        return JSONResponse(content={'message': 'book deletion successful'}, status_code=201)
     else: 
-        return JSONResponse(content={'message': 'book insertion not successful'}, status_code=500)
+        return JSONResponse(content={'message': 'book deletion not successful'}, status_code=500)
 
 # update book info
 @router.patch('/book/update')
