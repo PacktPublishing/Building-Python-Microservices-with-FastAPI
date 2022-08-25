@@ -38,4 +38,4 @@ class FacultyLoginRepository:
         
      
     def get_all_login(self) : 
-        return faculty_login_tbl.values();
+        return faculty_login_tbl
