@@ -34,7 +34,7 @@ def update_member(id:int, req:ProfileMembersReq):
     else: 
         return JSONResponse(content={'message':'update profile problem encountered'}, status_code=500)
     
-@router.delete("/member/delete/{}")
+@router.delete("/member/delete/{id}")
 def delete_member(id:int): 
     repo = MemberRepository()
     result = repo.delete_member(id)
