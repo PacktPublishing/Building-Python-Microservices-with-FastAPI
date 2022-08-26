@@ -5,6 +5,7 @@ from sqlalchemy import update, delete, insert
 from sqlalchemy.future import select
 from sqlalchemy.orm import Session
 from models.data.sqlalchemy_async_models import Attendance_Member
+from datetime import datetime
 
 class AttendanceRepository: 
     
@@ -13,7 +14,7 @@ class AttendanceRepository:
     
     async def insert_attendance(self, attendance: Attendance_Member) -> bool: 
         try:
-            sql = insert(Attendance_Member).values(id=attendance.id, member_id=attendance.member_id, timein=attendance.timein, timeout=attendance.timeout, date_log=attendance.date_log)
+            sql = insert(Attendance_Member).values(id=attendance.id, member_id=attendance.member_id, timein=datetime.strptime(attendance.timein, "%H:%M"), timeout=datetime.strptime(attendance.timeout, "%H:%M"), date_log=attendance.date_log)
             sql.execution_options(synchronize_session="fetch")
             await self.sess.execute(sql)
             
@@ -25,6 +26,8 @@ class AttendanceRepository:
     
     async def update_attendance(self, id:int, details:Dict[str, Any]) -> bool: 
        try:
+           details["timeout"] = datetime.strptime(details["timeout"] , "%H:%M")
+           details["timein"] = datetime.strptime(details["timein"] , "%H:%M")
            sql = update(Attendance_Member).where(Attendance_Member.id == id).values(**details)
            sql.execution_options(synchronize_session="fetch")
            await self.sess.execute(sql)
