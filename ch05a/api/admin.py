@@ -45,7 +45,7 @@ def update_signup(id:int, req: SignupReq, sess:Session = Depends(sess_db) ):
         return JSONResponse(content={'message':'update profile error'}, status_code=500)
     
 
-@router.delete("/signup/delete")
+@router.delete("/signup/delete/{id}")
 def delete_signup(id:int, sess:Session = Depends(sess_db) ):
     repo:SignupRepository = SignupRepository(sess)
     result = repo.delete_signup(id )
