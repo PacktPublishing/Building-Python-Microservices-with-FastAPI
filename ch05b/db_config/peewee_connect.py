@@ -17,7 +17,7 @@ class PeeweeConnectionState(_ConnectionState):
         return self._state.get()[name]
 
 db = PostgresqlDatabase(
-    'fcms',
+    'fcms2',
     user='postgres',
     password='admin2255',
     host='localhost',
