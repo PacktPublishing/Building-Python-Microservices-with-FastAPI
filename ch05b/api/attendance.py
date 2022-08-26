@@ -26,7 +26,7 @@ async def delete_attendance(id:int):
      async with AsynSessionFactory() as sess:
         async with sess.begin():
             repo = AttendanceRepository(sess)
-            return await repo.delete_attencance(id)
+            return await repo.delete_attendance(id)
 
 @router.get("/attendance/list")
 async def list_attendance():
