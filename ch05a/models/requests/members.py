@@ -28,8 +28,20 @@ class ProfileMembersReq(BaseModel):
         return [v.to_dict() for v in values]
 
     @validator('trainer_id', pre=True, allow_reuse=True, check_fields=False)
-    def trainer_object_to_map(cls, values):
-        return values.to_dict()
+    def trainer_object_to_int(cls, values):
+        if isinstance(values, int):
+            return values
+        else:
+            return values.id.id
+    
+    @validator('id', pre=True, allow_reuse=True, check_fields=False)
+    def member_id_to_int(cls, values):
+        
+        if isinstance(values, int):
+            return values
+            
+        else:
+            return values.id
     
     class Config:
         orm_mode = True
