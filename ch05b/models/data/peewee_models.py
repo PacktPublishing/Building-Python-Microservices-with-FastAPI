@@ -68,6 +68,7 @@ class Gym_Class(Model):
     
     member = ForeignKeyField(Profile_Members, backref="members")
     trainer = ForeignKeyField(Profile_Trainers, backref="trainers")
+    name = CharField(unique=False, index=False)
     approved = IntegerField(unique=False, index=False)
        
     class Meta:
