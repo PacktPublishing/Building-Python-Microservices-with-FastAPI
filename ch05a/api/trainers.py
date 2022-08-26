@@ -43,8 +43,8 @@ async def update_trainer(id:int, req: ProfileTrainersReq):
     else: 
         return JSONResponse(content={'message':'update trainer profile problem encountered'}, status_code=500)
 
-@router.delete("/trainer/delete")
-async def delete_signup(id:int):
+@router.delete("/trainer/delete/{id}")
+async def delete_delete(id:int):
     repo = TrainerRepository()
     result = await repo.delete_trainer(id )
     if result: 
