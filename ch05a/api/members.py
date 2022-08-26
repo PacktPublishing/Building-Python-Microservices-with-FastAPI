@@ -22,7 +22,7 @@ def add_member(req:ProfileMembersReq):
     if result == True: 
         return req 
     else: 
-        return JSONResponse(content={'message':'create login problem encountered'}, status_code=500)
+        return JSONResponse(content={'message':'create profile encountered'}, status_code=500)
 
 @router.patch("/member/update")
 def update_member(id:int, req:ProfileMembersReq): 
@@ -32,7 +32,7 @@ def update_member(id:int, req:ProfileMembersReq):
     if result == True: 
         return req 
     else: 
-        return JSONResponse(content={'message':'update login problem encountered'}, status_code=500)
+        return JSONResponse(content={'message':'update profile problem encountered'}, status_code=500)
     
 @router.get("/member/list")
 def list_members():

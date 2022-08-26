@@ -50,9 +50,9 @@ def delete_signup(id:int, sess:Session = Depends(sess_db) ):
     repo:SignupRepository = SignupRepository(sess)
     result = repo.delete_signup(id )
     if result: 
-        return JSONResponse(content={'message':'profile updated successfully'}, status_code=201)
+        return JSONResponse(content={'message':'profile deleted successfully'}, status_code=201)
     else: 
-        return JSONResponse(content={'message':'update profile error'}, status_code=500)
+        return JSONResponse(content={'message':'delete profile error'}, status_code=500)
     
 @router.get("/signup/list/{id}", response_model=SignupReq)
 def get_signup(id:int, sess:Session = Depends(sess_db)): 
