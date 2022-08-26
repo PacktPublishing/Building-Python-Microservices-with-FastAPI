@@ -71,6 +71,7 @@ class Attendance_Member(db.Model):
 class Gym_Class(db.Model): 
     __tablename__ = "gym_class"
     id = db.Column(db.Integer, primary_key=True, index=True)
+    name = db.Column(db.String, unique=False, index=False)
     member_id = db.Column(db.Integer, db.ForeignKey('profile_members.id'), unique=False, index=False)
     trainer_id = db.Column(db.Integer, db.ForeignKey('profile_trainers.id'), unique=False, index=False)
     approved = db.Column(db.Integer, unique=False, index=False)

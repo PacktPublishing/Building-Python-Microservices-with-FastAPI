@@ -64,6 +64,7 @@ class Attendance_Member(Base):
 class Gym_Class(Base): 
     __tablename__ = "gym_class"
     id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, unique=False, index=False)
     member_id = Column(Integer, ForeignKey('profile_members.id'), unique=False, index=False)
     trainer_id = Column(Integer, ForeignKey('profile_trainers.id'), unique=False, index=False)
     approved_id = Column(Integer, unique=False, index=False)

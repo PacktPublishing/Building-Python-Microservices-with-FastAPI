@@ -58,6 +58,7 @@ class Attendance_Member(db.Entity):
 class Gym_Class(db.Entity): 
     _table_ = "gym_class"
     id = PrimaryKey(int)
+    name = Required(str)
     member_id = Required("Profile_Members", reverse="gclass")
     trainer_id = Required("Profile_Trainers", reverse="gclass")
     approved = Required(int)
