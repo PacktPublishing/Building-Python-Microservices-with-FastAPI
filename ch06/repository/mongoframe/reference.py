@@ -19,9 +19,11 @@ class ReferenceRepository:
         try:
             item = Category(**details)
             reference = Reference.one(Q.id==id)
+            if reference.categories == None:
+                reference.categories = list()
             reference.categories.append(item)
             reference.update()
-        except: 
+        except:
            return False 
         return True
     
