@@ -42,6 +42,17 @@ def login(credentials: HTTPBasicCredentials = Depends(http_basic), sess:Session 
     else:
         raise HTTPException(
             status_code=400, detail="Incorrect username or password")
+
+@router.delete("/login/delete/{id}")
+def delete_login(id:int, credentials: HTTPBasicCredentials = Depends(http_basic), sess:Session = Depends(sess_db)):
+    
+    loginrepo = LoginRepository(sess)
+    result = loginrepo.delete_login(id)
+    if result == True:
+        return JSONResponse(content={'message':'login deleted successfully'}, status_code=201)  
+    else:
+        raise HTTPException(
+            status_code=400, detail="Incorrect username or password")
         
 @router.get("/login/users/list")
 def list_all_login(credentials: HTTPBasicCredentials = Depends(http_basic), sess:Session = Depends(sess_db)):
