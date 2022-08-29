@@ -1,43 +1,61 @@
-from fastapi import APIRouter, Security
-from fastapi.responses import RedirectResponse
-from fastapi.requests import Request
-from security.secure import set_up, get_token, get_current_user
-import hashlib
-import os
-import urllib.parse as parse
+from fastapi import APIRouter, Depends, HTTPException
+from fastapi.encoders import jsonable_encoder
+from fastapi.responses import JSONResponse
 
+
+from sqlalchemy.orm import Session
+from db_config.sqlalchemy_connect import sess_db
+from models.data.sqlalchemy_models import Signup, Login
+from repository.signup import SignupRepository
+from repository.login import LoginRepository
+
+from fastapi.security import HTTPBasicCredentials
+from security.secure import authenticate, get_password_hash, http_basic
+
+from datetime import date
 router = APIRouter()
 
-@router.get("/auth/login")
-def login_keycloak() -> RedirectResponse:
-    config = set_up()
-    state = hashlib.sha256(os.urandom(32)).hexdigest()
- 
-    AUTH_BASE_URL = f"{config['KEYCLOAK_BASE_URL']}/auth/realms/AuctionRealm/protocol/openid-connect/auth"
-    AUTH_URL = AUTH_BASE_URL + '?{}'.format(parse.urlencode({
-        'client_id': config["CLIENT_ID"],
-        'redirect_uri': config["REDIRECT_URI"],
-        'state': state,
-        'response_type': 'code'
-    }))
+@router.get("/approve/signup")
+def signup_approve(username:str, credentials: HTTPBasicCredentials = Depends(http_basic), sess:Session = Depends(sess_db)): 
+    signuprepo = SignupRepository(sess)
+    result:Signup = signuprepo.get_signup_username(username) 
+    print(result)
+    if result == None: 
+        return JSONResponse(content={'message':'username is not valid'}, status_code=401)
+    else:
+        passphrase = get_password_hash(result.password)
+        login = Login(id=result.id, username=result.username, password=result.password, passphrase=passphrase, approved_date=date.today())
+        loginrepo = LoginRepository(sess)
+        success  = loginrepo.insert_login(login)
+        if success == False: 
+            return JSONResponse(content={'message':'create login problem encountered'}, status_code=500)
+        else:
+            return login
+        
+@router.get("/login")
+def login(credentials: HTTPBasicCredentials = Depends(http_basic), sess:Session = Depends(sess_db)):
+    
+    loginrepo = LoginRepository(sess)
+    account = loginrepo.get_all_login_username(credentials.username)
+    if authenticate(credentials, account) and not account == None:
+        return account
+    else:
+        raise HTTPException(
+            status_code=400, detail="Incorrect username or password")
 
-    response = RedirectResponse(AUTH_URL)
-    response.set_cookie(key="AUTH_STATE", value=state)
-    return response
-
-
-@router.get("/auth/callback")
-def auth(request: Request, code: str, state: str) -> RedirectResponse:
-   
-    if state != request.cookies.get("AUTH_STATE"):
-        return {"error": "state_verification_failed"}
-    return get_token(code)
-
-
-@router.get("/private")
-def private(request: Request, current_user = Security(get_current_user, scopes=["fastapi-scope"])):
-    return {"message": "You're an authorized user"}
-
-@router.get("/private-with-scopes")
-def privateScopes(request: Request, current_user = Security(get_current_user, scopes=["data"])):
-    return {"message": "You're authorized with scopes!"}
+@router.delete("/login/delete/{id}")
+def delete_login(id:int, credentials: HTTPBasicCredentials = Depends(http_basic), sess:Session = Depends(sess_db)):
+    
+    loginrepo = LoginRepository(sess)
+    result = loginrepo.delete_login(id)
+    if result == True:
+        return JSONResponse(content={'message':'login deleted successfully'}, status_code=201)  
+    else:
+        raise HTTPException(
+            status_code=400, detail="Incorrect username or password")
+        
+@router.get("/login/users/list")
+def list_all_login(credentials: HTTPBasicCredentials = Depends(http_basic), sess:Session = Depends(sess_db)):
+    loginrepo = LoginRepository(sess)
+    users = loginrepo.get_all_login()
+    return jsonable_encoder(users)
