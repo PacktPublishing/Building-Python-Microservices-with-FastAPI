@@ -41,7 +41,7 @@ async def update_purchase(id:int, req: PurchaseReq, engine=Depends(create_db_eng
     else: 
         return JSONResponse(content={"message": "update purchase unsuccessful"}, status_code=500) 
     
-@router.patch("/purchase/delete/{id}")
+@router.delete("/purchase/delete/{id}")
 async def delete_purchase(id:int, engine=Depends(create_db_engine)): 
     repo:PurchaseRepository = PurchaseRepository(engine)
     result = await repo.delete_purchase(id)  
