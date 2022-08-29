@@ -16,10 +16,14 @@ class OrderRepository:
         try:
             item = await Cart.get(cart_id)
             order = await Order.get(id)
-            order.orders.append(item)            #await order.set({Order.orders:})
-            print(order.orders)
+           
+            if order.orders == None:
+                order.orders = list()
+                
+            if not item == None:
+                order.orders.append(item)    
             await order.set({Order.orders: order.orders})
-            await item.delete()
+            
         except Exception as e:
             print(e)
             return False 

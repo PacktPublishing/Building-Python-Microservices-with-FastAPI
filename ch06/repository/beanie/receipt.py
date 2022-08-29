@@ -17,7 +17,7 @@ class ReceiptRepository:
             order = await Order.get(order_id)
             receipt = await Receipt.get(id)
             await receipt.set({Receipt.order: order})
-            await order.delete()
+           
         except Exception as e:
             print(e)
             return False 
