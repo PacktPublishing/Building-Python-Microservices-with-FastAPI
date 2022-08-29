@@ -1,6 +1,7 @@
-from fastapi import APIRouter, Depends, HTTPException, Security
+from fastapi import APIRouter, Depends, HTTPException
 from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
+
 
 from sqlalchemy.orm import Session
 from db_config.sqlalchemy_connect import sess_db
@@ -8,24 +9,14 @@ from models.data.sqlalchemy_models import Signup, Login
 from repository.signup import SignupRepository
 from repository.login import LoginRepository
 
-from passlib.context import CryptContext
-from fastapi.security import OAuth2PasswordRequestForm
-from security.secure import authenticate, create_access_token, get_current_valid_user
+from fastapi.security import HTTPBasicCredentials
+from security.secure import authenticate, get_password_hash, http_basic
 
-from datetime import date, timedelta
+from datetime import date
 router = APIRouter()
 
-crypt_context = CryptContext(schemes=["sha256_crypt", "md5_crypt"])
-SECRET_KEY = "565f2855e4cea6b54714347ed73d1b3ba57ed696428867d4cbf89d575a3c7c4c"
-ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 30
-
-
-def get_password_hash(password):
-    return crypt_context.hash(password)
-
 @router.get("/approve/signup")
-def signup_approve(username:str, current_user: Login = Security(get_current_valid_user, scopes=["admin_write"]), sess:Session = Depends(sess_db)): 
+def signup_approve(username:str, credentials: HTTPBasicCredentials = Depends(http_basic), sess:Session = Depends(sess_db)): 
     signuprepo = SignupRepository(sess)
     result:Signup = signuprepo.get_signup_username(username) 
     print(result)
@@ -41,26 +32,30 @@ def signup_approve(username:str, current_user: Login = Security(get_current_vali
         else:
             return login
         
-@router.post("/login/token")
-def login(form_data: OAuth2PasswordRequestForm = Depends(), sess:Session = Depends(sess_db)):
-    username = form_data.username
-    password = form_data.password
+@router.get("/login")
+def login(credentials: HTTPBasicCredentials = Depends(http_basic), sess:Session = Depends(sess_db)):
+    
     loginrepo = LoginRepository(sess)
-    account = loginrepo.get_all_login_username(username)
-    if authenticate(username, password, account):
-        access_token = create_access_token(
-            data={"sub": username, "scopes": form_data.scopes},  expires_delta=timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES))
-        return {"access_token": access_token, "token_type": "bearer"}
+    account = loginrepo.get_all_login_username(credentials.username)
+    if authenticate(credentials, account) and not account == None:
+        return account
     else:
         raise HTTPException(
             status_code=400, detail="Incorrect username or password")
 
-@router.get("/menu")
-def access_valid_user_page(current_user: Login = Depends(get_current_valid_user)):
-    return {"content": "menu page"}
-
+@router.delete("/login/delete/{id}")
+def delete_login(id:int, credentials: HTTPBasicCredentials = Depends(http_basic), sess:Session = Depends(sess_db)):
+    
+    loginrepo = LoginRepository(sess)
+    result = loginrepo.delete_login(id)
+    if result == True:
+        return JSONResponse(content={'message':'login deleted successfully'}, status_code=201)  
+    else:
+        raise HTTPException(
+            status_code=400, detail="Incorrect username or password")
+        
 @router.get("/login/users/list")
-def list_all_login(current_user: Login = Security(get_current_valid_user, scopes=["admin_read"]), sess:Session = Depends(sess_db)):
+def list_all_login(credentials: HTTPBasicCredentials = Depends(http_basic), sess:Session = Depends(sess_db)):
     loginrepo = LoginRepository(sess)
     users = loginrepo.get_all_login()
     return jsonable_encoder(users)
