@@ -5,7 +5,6 @@ from models.request.tokens import TokenData
 from passlib.context import CryptContext
 from fastapi.security import OAuth2AuthorizationCodeBearer, SecurityScopes 
 
-
 from jose import jwt, JWTError
 
 from models.data.sqlalchemy_models import Login
@@ -22,14 +21,15 @@ ACCESS_TOKEN_EXPIRE_MINUTES = 30
 oauth2_scheme = OAuth2AuthorizationCodeBearer(
     authorizationUrl='ch07/oauth2/authorize',
     tokenUrl="ch07/login/token",  
-    scopes={"admin_read": "admin role that has read only role",
-            "admin_write":"admin role that has write only role",
-            "customer_read":"customer role that has read only role",
-            "customer_write":"customer role that has write only role",
-            "buyer_read":"buyer role that has read only role",
-            "buyer_write":"buyer role that has write only role",
-            "user":"valid user of the application",
-            "guest":"visitor of the site"},
+    scopes={ 
+            "admin_read": "admin role that has read only role",
+             "admin_write":"admin role that has write only role",
+             "auction_read":"auction role that has read only role",
+             "auction_write":"auction role that has write only role",
+             "bidder_read":"bidder role that has read only role",
+             "bidder_write":"bidder role that has write only role",
+             "user":"valid user of the application",
+             "guest":"visitor of the site" },
     )
 
 def create_access_token(data: dict, expires_delta: timedelta):
@@ -42,10 +42,8 @@ def create_access_token(data: dict, expires_delta: timedelta):
 def verify_password(plain_password, hashed_password):
     return crypt_context.verify(plain_password, hashed_password)
 
-
 def authenticate(username, password, account:Login):
     try:
-        print('hello')
         password_check = verify_password(password, account.passphrase)
         return password_check
     except Exception as e:
@@ -74,7 +72,7 @@ def get_current_user(security_scopes: SecurityScopes, token: str = Depends(oauth
         raise credentials_exception
     loginrepo = LoginRepository(sess)
     user = loginrepo.get_all_login_username(token_data.username)
-  
+ 
     if user is None:
         raise credentials_exception
     for scope in security_scopes.scopes:
@@ -85,7 +83,6 @@ def get_current_user(security_scopes: SecurityScopes, token: str = Depends(oauth
                 headers={"WWW-Authenticate": authenticate_value},
             )
     return user
-
 
 def get_current_valid_user(current_user: Login = Security(get_current_user, scopes=["user"])):
     if current_user == None:
