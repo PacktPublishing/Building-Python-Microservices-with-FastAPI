@@ -12,7 +12,7 @@ from uuid import UUID
 
 
 container = Container()
-#container[BadRecipeRepository] = Singleton(BadRecipeRepository())
+#container[BadRecipeRepository] = Singleton(BadRecipeRepository)
 container[BadRecipeRepository] = BadRecipeRepository()
 
 router = APIRouter()
