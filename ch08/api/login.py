@@ -20,7 +20,7 @@ def add_login_coroutine(req: LoginReq):
     login_dict = req.dict(exclude_unset=True)
     repo = LoginRepository()
     result = yield from repo.insert_login(login_dict)
-    if result[0] == True: 
+    if result== True: 
         return req 
     else: 
         return JSONResponse(content={'message':'insert login profile problem encountered'}, status_code=500)
@@ -30,8 +30,8 @@ def add_login_coroutine(req: LoginReq):
 def update_login(id:int, req: LoginReq):
     login_dict = req.dict(exclude_unset=True)
     repo = LoginRepository()
-    result = yield from repo.update_login(login_dict)
-    if result[0] == True: 
+    result = yield from repo.update_login(id, login_dict)
+    if result == True: 
         return req 
     else: 
         return JSONResponse(content={'message':'update login profile problem encountered'}, status_code=500)

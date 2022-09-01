@@ -21,3 +21,9 @@ async def add_vendor(req: VendorReq):
         return req 
     else: 
         return JSONResponse(content={'message':'update trainer profile problem encountered'}, status_code=500)
+    
+@router.get("/vendor/list")
+async def list_vendor():
+    repo = VendorRepository()
+    result = await repo.get_all_vendor()
+    return result

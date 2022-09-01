@@ -22,4 +22,8 @@ async def add_publication(req: PublicationReq):
     else: 
         return JSONResponse(content={'message':'update trainer profile problem encountered'}, status_code=500)
     
-
+@router.get("/publication/list")
+async def list_publication():
+    repo = PublicationRepository()
+    result = await repo.get_all_publication()
+    return result
