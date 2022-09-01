@@ -8,7 +8,7 @@ class BillingRepository:
         try:
             await Billing.create(**details)
         except Exception as e: 
-            print()
+            print(e)
             return False 
         return True
     
