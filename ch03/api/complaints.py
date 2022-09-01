@@ -12,8 +12,8 @@ from uuid import UUID
 
 
 container = Container()
-#container[BadRecipeRepository] = Singleton(BadRecipeRepository())
 container[BadRecipeRepository] = BadRecipeRepository()
+#container[BadRecipeRepository] = Singleton(BadRecipeRepository) #another way
 
 router = APIRouter()
 deps = FastApiIntegration(container, request_singletons=[BadRecipeRepository])
