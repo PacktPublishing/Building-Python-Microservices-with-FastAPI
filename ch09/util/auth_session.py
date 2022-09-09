@@ -69,7 +69,7 @@ class SessionDbMiddleware(BaseHTTPMiddleware):
                 login = await repo_login.get_login_credentials(username, password)
                 if login == None:
                     self.client_od.close()
-                    return JSONResponse(status_code=403) 
+                    return JSONResponse(content='some problem occurred',status_code=403) 
                 else:
                     token = jwt.encode({"sub": username}, self.sess_key)
                     sess_record = dict()
@@ -86,4 +86,4 @@ class SessionDbMiddleware(BaseHTTPMiddleware):
                 return response
         except Exception as e :
             print(e)
-            return JSONResponse(status_code=500) 
+            return JSONResponse(content='some problem occurred', status_code=500) 

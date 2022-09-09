@@ -73,6 +73,7 @@ class FileRequest(Request):
        async def form(self) -> bytes:
               
         body = await super().body()
+      
         rv = base64.b64encode(body).decode('utf-8')
         try:
             print(rv)
