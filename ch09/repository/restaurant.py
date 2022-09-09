@@ -74,5 +74,6 @@ class RestaurantRepository:
           restaurant.ambiance_rating.append(ambiance_rate)
           await self.engine.save(restaurant)
        except Exception as e:
+           print(e)
            return False 
        return True
