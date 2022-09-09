@@ -6,3 +6,4 @@ class AmbianceRateReq(BaseModel):
     question_id: int
     rate: AmbianceRatingScale
     date_rated: date 
+    profile_id: int
