@@ -16,7 +16,7 @@ async def add_login(req:LoginReq):
     else: 
         return JSONResponse(content={'message':'insert login problem encountered'}, status_code=500)
     
-@router.delete("/login/delete/{id}")
+@router.patch("/login/update")
 async def update_password(username:str, new_password:str):
     repo = LoginRepository()
     result = await repo.update_password(username, new_password)
@@ -26,7 +26,7 @@ async def update_password(username:str, new_password:str):
         return JSONResponse(content={'message':'update login problem encountered'}, status_code=500)
 
 @router.delete("/login/delete/{id}")
-async def delete_location(id:int):
+async def delete_login(id:int):
     repo = LoginRepository()
     result = await repo.delete_login(id)
     if result == True: 

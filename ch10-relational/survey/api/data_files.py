@@ -85,4 +85,4 @@ def upload_survey_form(request:Request):
 @router.post("/upload/survey/form")
 async def submit_survey_form(request: Request, file: UploadFile = File(...)):
     df = pd.read_csv(StringIO(str(file.file.read(), 'utf-8')), encoding='utf-8')
-    return templates.TemplateResponse('render_survey.html', {'request': request, 'data': df.toto_html()})
+    return templates.TemplateResponse('render_survey.html', {'request': request, 'data': df.to_html()})

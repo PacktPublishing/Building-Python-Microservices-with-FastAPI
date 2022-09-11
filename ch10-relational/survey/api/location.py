@@ -17,7 +17,7 @@ async def add_location(req:LocationReq):
     else: 
         return JSONResponse(content={'message':'insert location problem encountered'}, status_code=500)
     
-@router.patch("/occupation/update")
+@router.patch("/location/update")
 async def update_location(id:int, req:LocationReq):
     location_repo = req.dict(exclude_unset=True)
     repo = LocationRepository()
