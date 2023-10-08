@@ -1,0 +1,13 @@
+anyio
+click
+colorama
+fastapi
+h11
+idna
+pydantic
+python-multipart
+six
+sniffio
+starlette
+typing_extensions
+uvicorn

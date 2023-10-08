@@ -1,0 +1,16 @@
+anyio
+bcrypt
+cffi
+click
+colorama
+fastapi
+h11
+idna
+pycparser
+pydantic
+python-multipart
+six
+sniffio
+starlette
+typing_extensions
+uvicorn
